@@ -29,7 +29,8 @@ def preprocess_text(text, tokenizer):
     return pad_sequences(sequence, maxlen=90, padding='post')
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://cshw-frontend-fake-job-detection.onrender.com"])
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
