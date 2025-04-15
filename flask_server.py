@@ -6,7 +6,10 @@ from flask import Flask, request, jsonify
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from flask_cors import CORS
 import pickle
+app = Flask(__name__)
+CORS(app, origins=["https://cshw-frontend-fake-job-detection.onrender.com"])
 
+print("✅ CORS configured for: https://cshw-frontend-fake-job-detection.onrender.com")
 
 # Load model and preprocessors
 model = tf.keras.models.load_model("fake_job_detection.h5")
@@ -28,10 +31,7 @@ def preprocess_text(text, tokenizer):
     sequence = tokenizer.texts_to_sequences([text])
     return pad_sequences(sequence, maxlen=90, padding='post')
 
-app = Flask(__name__)
-CORS(app, origins=["https://cshw-frontend-fake-job-detection.onrender.com"])
 
-print("✅ CORS configured for: https://cshw-frontend-fake-job-detection.onrender.com")
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
