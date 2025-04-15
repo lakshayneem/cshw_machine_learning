@@ -31,7 +31,7 @@ def preprocess_text(text, tokenizer):
 app = Flask(__name__)
 CORS(app, origins=["https://cshw-frontend-fake-job-detection.onrender.com"])
 
-
+print("✅ CORS configured for: https://cshw-frontend-fake-job-detection.onrender.com")
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
