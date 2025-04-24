@@ -11,6 +11,9 @@ from flask_cors import CORS
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+from middleware import CORSMiddleware
+
+app.wsgi_app = CORSMiddleware(app.wsgi_app)
 
 # Flask app initialization
 app = Flask(__name__)
