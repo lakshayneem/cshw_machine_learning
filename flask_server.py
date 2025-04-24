@@ -13,7 +13,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from middleware import CORSMiddleware
 
-app.wsgi_app = CORSMiddleware(app.wsgi_app)
+
 
 # Flask app initialization
 app = Flask(__name__)
@@ -143,6 +143,7 @@ def analyze_review():
     return jsonify(response)
 
 # === Run the app ===
+app.wsgi_app = CORSMiddleware(app.wsgi_app)
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
