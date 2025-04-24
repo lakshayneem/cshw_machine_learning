@@ -14,7 +14,7 @@ from nltk.stem import WordNetLemmatizer
 
 # Flask app initialization
 app = Flask(__name__)
-CORS(app) 
+CORS(app, resources={r"/*": {"origins": "*"}}) 
 
 # Download necessary NLTK data
 nltk.download('stopwords')
