@@ -8,7 +8,8 @@ from flask_cors import CORS
 import pickle
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS
+CORS(app, origins=["https://cshw-frontend-fake-job-detection.onrender.com"])
+
 # Load model and preprocessors
 model = tf.keras.models.load_model("fake_job_detection.h5")
 
