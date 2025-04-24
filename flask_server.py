@@ -1,3 +1,4 @@
+import os
 import re
 import joblib
 import pickle
@@ -94,7 +95,6 @@ def predict():
 
         X_input = np.hstack([company_profile, description, requirements, benefits, categorical_encoded, boolean_features])
 
-        # Pad to match expected input shape
         current_features = X_input.shape[1]
         if current_features < EXPECTED_FEATURES:
             padding = np.zeros((1, EXPECTED_FEATURES - current_features))
@@ -139,6 +139,7 @@ def analyze_review():
 
     return jsonify(response)
 
-
+# === Run the app ===
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
