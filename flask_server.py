@@ -13,7 +13,7 @@ from nltk.stem import WordNetLemmatizer
 
 # Flask app initialization
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://cshw-frontend-fake-job-detection.onrender.com"])
 
 # Download necessary NLTK data
 nltk.download('stopwords')
